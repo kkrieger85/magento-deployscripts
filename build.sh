@@ -90,7 +90,12 @@ touch htdocs/maintenance.flag
 # Create package
 if [ ! -d "artifacts/" ] ; then mkdir artifacts/ ; fi
 
-tmpfile=$(tempfile -p build_tar_base_files_)
+unamestr=`uname`
+if [[ "$unamestr" == 'Darwin' ]]; then
+tmpfile=$(mktemp -t build_tar_base_files_);
+else
+tmpfile=$(tempfile -p build_tar_base_files_);
+fi
 
 # Backwards compatibility in case tar_excludes.txt doesn't exist
 if [ ! -f "config/tar_excludes.txt" ] ; then
@@ -118,4 +123,8 @@ ${TAR_COMMAND} "${EXTRAPACKAGE}" \
 rm "$tmpfile"
 
 cd artifacts
+if [[ "$unamestr" == 'Darwin' ]]; then
+md5 * > MD5SUMS
+else
 md5sum * > MD5SUMS
+fi
