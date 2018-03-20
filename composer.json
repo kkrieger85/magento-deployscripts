@@ -1,19 +1,24 @@
 {
-  "name":"ambimax/magento-deployscripts",
-  "description":"Collection of scripts for Magento builds and deployments",
-  "minimum-stability":"dev",
-  "authors":[
+  "name": "ambimax/magento-deployscripts",
+  "description": "Collection of scripts for Magento builds and deployments",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
     {
-      "name":"Fabrizio Branca"
+      "name": "Fabrizio Branca"
     },
     {
       "name": "Tobias Schifftner"
     }
   ],
   "bin": [
+    "git-status.sh",
     "install.sh",
     "n98-magerun.phar",
     "modman",
-    "project_reset.sh"
+    "project_reset.sh",
+    "phplint.sh",
+    "test.sh",
+    "xmllint.sh"
   ]
 }
